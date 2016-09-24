@@ -199,7 +199,7 @@ var Launchpad = function(port, initAnimation) {
             this.output.openPort(port);
             this.input.openPort(port);
             console.log('running launchpad on port ' + port + this.output.getPortName(port));
-            
+
         } else {
             // Detect Launchpad by checking the port names
             let openLaunchpadPort = function(io, name) {
@@ -212,10 +212,10 @@ var Launchpad = function(port, initAnimation) {
                         return true;
                     });
             };
-            
+
             let openedOutput = openLaunchpadPort(this.output, 'output'),
                 openedInput = openLaunchpadPort(this.input, 'input');
-            
+
             if (!openedInput) throw new Error('Could not detect Launchpad on input ports.');
             if (!openedOutput) throw new Error('Could not detect Launchpad on output ports.')
         }
@@ -257,6 +257,20 @@ Launchpad.prototype.renderByte = function(x, y, color, byte) {
             break;
     }
     this._grid[y][x].light(color);
+};
+
+Launchpad.prototype.renderColors = function(colors) {
+    if (colors === undefined) return;
+        for (var x = 0; x < colors.length; x++) {
+        var colorColumn = colors[x];
+        for (var y = 0; y < colorColumn.length; y++) {
+            if (!this._grid[y][x]) {
+                console.log("Button not found: x:"+x+", y:"+y);
+                return;
+            }
+            this._grid[y][x].light(colorColumn[y]);
+        }
+    }
 };
 
 Launchpad.prototype.renderBytes = function(bytes, color) {
@@ -321,7 +335,7 @@ Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
     var charPos = 0;
     var overallBytes = [];
     var interval = null;
-    
+
     for (var i= 0; i < bytes[0].length; i++) {
         var toAdd = "";
         for (var j = 0; j < bytes.length;j++) {
