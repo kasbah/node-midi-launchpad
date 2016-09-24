@@ -27,14 +27,14 @@ var Launchpad = function(port, initAnimation) {
     var that = this;
 
     this.specials = {
-        0:{ 8: ["right","vol"] },
-        1:{ 8: ["right","pan"] },
-        2:{ 8: ["right","snd A"] },
-        3:{ 8: ["right","snd B"] },
-        4:{ 8: ["right","stop"] },
-        5:{ 8: ["right","trk on"] },
-        6:{ 8: ["right","solo"] },
-        7:{ 8: ["right","arm"] },
+        0:{ 8: ["row","vol"] },
+        1:{ 8: ["row","pan"] },
+        2:{ 8: ["row","snd A"] },
+        3:{ 8: ["row","snd B"] },
+        4:{ 8: ["row","stop"] },
+        5:{ 8: ["row","trk on"] },
+        6:{ 8: ["row","solo"] },
+        7:{ 8: ["row","arm"] },
         8:{
             0:["up","page"],
             1:["down","page"],
