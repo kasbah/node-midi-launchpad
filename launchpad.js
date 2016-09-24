@@ -54,10 +54,6 @@ var Launchpad = function(port, initAnimation) {
             for(var x = 0; x < 9; x++) {
                 if (that._grid[x] === undefined) that._grid[x] = [];
                 that._grid[x][y] = new Button(that, x, y);
-                (function(x,y) {
-                    //that._grid[x][y].dark();
-                })(x,y);
-
             }
         }
     };
@@ -198,7 +194,7 @@ var Launchpad = function(port, initAnimation) {
             // Open the specified port
             this.output.openPort(port);
             this.input.openPort(port);
-            console.log('running launchpad on port ' + port + this.output.getPortName(port));
+            console.log('Running launchpad on port ' + port + this.output.getPortName(port));
 
         } else {
             // Detect Launchpad by checking the port names
@@ -229,7 +225,7 @@ var Launchpad = function(port, initAnimation) {
         this.initialize();
     };
 
-    console.log('setting up Launchpad on ' + (port ? `port ${port}` : 'auto-detected port'));
+    console.log('Setting up Launchpad on ' + (port ? `port ${port}` : 'auto-detected port'));
     this.init();
 
 };
